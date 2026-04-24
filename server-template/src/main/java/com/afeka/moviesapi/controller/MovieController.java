@@ -15,7 +15,7 @@ import java.util.List;
  *  משימה 2 — MovieController (שכבת ה-HTTP / REST)
  * ════════════════════════════════════════════════════════════════
  *
- * Base URL: http://localhost:<port>/api/v1/movies
+ * Base URL: http://localhost:<your-port>/api/v1/movies
  *
  * עליכם להשלים את ה-endpoints שמסומנים ב-TODO.
  * ה-endpoint הראשון (GET /movies) נתון כדוגמה.

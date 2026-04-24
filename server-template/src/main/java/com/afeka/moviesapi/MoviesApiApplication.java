@@ -39,8 +39,7 @@ class DataSeeder implements CommandLineRunner {
             new Movie("Interstellar",              "Christopher Nolan",2014, "Sci-Fi", 8.6),
             new Movie("The Matrix",                "Wachowski Sisters",1999, "Sci-Fi", 8.7)
         ));
-        System.out.println("✅  6 movies loaded into the database.");
-        System.out.println("🎬  API ready at: http://localhost:"
-            + System.getProperty("server.port", "8080") + "/api/v1/movies");
+        System.out.println("6 movies loaded into the database.");
+        System.out.println("API ready at: http://localhost:" + port + "/api/v1/movies");
     }
 }

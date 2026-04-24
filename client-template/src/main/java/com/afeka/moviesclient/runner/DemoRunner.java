@@ -8,14 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * ════════════════════════════════════════════════════════════════
- *  משימה 4 — DemoRunner (תרחיש הדגמה מקצה לקצה)
- * ════════════════════════════════════════════════════════════════
- *
- * השלימו את הסעיפים המסומנים ב-TODO.
- * השתמשו בשיטות שמימשתם ב-MovieClient.
- */
 @Component
 public class DemoRunner implements CommandLineRunner {
 
@@ -31,54 +23,43 @@ public class DemoRunner implements CommandLineRunner {
         System.out.println("  MOVIES CLIENT DEMO");
         System.out.println("================================================\n");
 
-        // ── שלב 1 — GET כל הסרטים (מוכן לדוגמה) ─────────────────────────
-        System.out.println("🎬 [GET] Fetching all movies...");
+        // ── Step 1: GET all movies (provided) ────────────────────────────────
+        System.out.println("[GET] Fetching all movies...");
         List<Movie> movies = movieClient.getAllMovies();
-        movies.forEach(m -> System.out.println("  → " + m));
+        movies.forEach(m -> System.out.println("  -> " + m));
 
-        // ════════════════════════════════════════════════════════════════
-        // TODO משימה 4א — GET סרט ספציפי לפי ID
-        // ════════════════════════════════════════════════════════════════
-        System.out.println("\n🔍 [GET] Fetching movie with ID=1...");
-        // TODO: קראו ל- movieClient.getMovieById(1L)
-        //       והשתמשו ב-.ifPresentOrElse() להדפסת התוצאה
-        //       (ראו דוגמה בקובץ DemoRunner של הפרויקט books)
+        // ── Task 4a: GET by ID ────────────────────────────────────────────────
+        System.out.println("\n[GET] Fetching movie with ID=1...");
+        Optional<Movie> movie = movieClient.getMovieById(1L);
+        movie.ifPresentOrElse(
+                m -> System.out.println("  -> Found: " + m),
+                () -> System.out.println("  -> Not found (404)")
+        );
 
+        // ── Task 4b: GET by genre ─────────────────────────────────────────────
+        System.out.println("\n[GET] Fetching Sci-Fi movies...");
+        List<Movie> scifi = movieClient.getMoviesByGenre("Sci-Fi");
+        scifi.forEach(m -> System.out.println("  -> " + m));
 
-        // ════════════════════════════════════════════════════════════════
-        // TODO משימה 4ב — GET סרטים לפי ז'אנר
-        // ════════════════════════════════════════════════════════════════
-        System.out.println("\n🎭 [GET] Fetching Sci-Fi movies...");
-        // TODO: קראו ל- movieClient.getMoviesByGenre("Sci-Fi")
-        //       והדפיסו את כל הסרטים שחזרו
+        // ── Task 4c: POST create ──────────────────────────────────────────────
+        System.out.println("\n[POST] Creating a new movie...");
+        Movie newMovie = new Movie("Pulp Fiction", "Quentin Tarantino", 1994, "Crime", 8.9);
+        Movie created = movieClient.createMovie(newMovie);
+        System.out.println("  -> Created: " + created);
+        Long newId = created.getId();
 
+        // ── Task 4d: DELETE ───────────────────────────────────────────────────
+        System.out.println("\n[DELETE] Deleting movie id=" + newId + "...");
+        movieClient.deleteMovie(newId);
+        System.out.println("  -> Deleted successfully");
 
-        // ════════════════════════════════════════════════════════════════
-        // TODO משימה 4ג — POST יצירת סרט חדש
-        // ════════════════════════════════════════════════════════════════
-        System.out.println("\n➕ [POST] Creating a new movie...");
-        // TODO: צרו Movie חדש (בחרו סרט שאתם אוהבים!)
-        //       קראו ל- movieClient.createMovie(newMovie)
-        //       הדפיסו את הסרט שנוצר (כולל ה-ID שהוקצה)
-        //       שמרו את ה-ID במשתנה newId לשימוש בהמשך
-
-
-        // ════════════════════════════════════════════════════════════════
-        // TODO משימה 4ד — DELETE מחיקת הסרט שנוצר
-        // ════════════════════════════════════════════════════════════════
-        System.out.println("\n🗑️  [DELETE] Deleting the new movie...");
-        // TODO: מחקו את הסרט שיצרתם (השתמשו ב-newId)
-        //       הדפיסו הודעת אישור
-
-
-        // ════════════════════════════════════════════════════════════════
-        // TODO משימה 4ה — אימות 404 אחרי המחיקה
-        // ════════════════════════════════════════════════════════════════
-        System.out.println("\n❓ [GET] Verifying deletion (expect 404)...");
-        // TODO: נסו לקבל את הסרט שמחקתם
-        //       ודאו שמקבלים Optional.empty() (404)
-        //       הדפיסו "Confirmed 404 - movie was deleted ✅"
-
+        // ── Task 4e: Verify 404 ───────────────────────────────────────────────
+        System.out.println("\n[GET] Verifying deletion (expect 404)...");
+        Optional<Movie> gone = movieClient.getMovieById(newId);
+        gone.ifPresentOrElse(
+                m -> System.out.println("  -> Still exists? " + m),
+                () -> System.out.println("  -> Confirmed 404 - movie was deleted")
+        );
 
         System.out.println("\n================================================");
         System.out.println("  DEMO COMPLETE");
