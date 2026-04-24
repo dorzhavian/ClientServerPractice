@@ -1,5 +1,5 @@
 package com.afeka.moviesapi.dto;
-
+import com.afeka.moviesapi.model.Movie;
 import jakarta.validation.constraints.*;
 
 /**
