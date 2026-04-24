@@ -31,6 +31,7 @@ class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        String port = "";
         movieRepository.saveAll(List.of(
             new Movie("The Shawshank Redemption", "Frank Darabont",    1994, "Drama",  9.3),
             new Movie("The Godfather",             "Francis Coppola",  1972, "Crime",  9.2),
