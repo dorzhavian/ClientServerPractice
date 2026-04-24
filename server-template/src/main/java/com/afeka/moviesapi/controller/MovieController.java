@@ -20,6 +20,8 @@ import java.util.List;
  * עליכם להשלים את ה-endpoints שמסומנים ב-TODO.
  * ה-endpoint הראשון (GET /movies) נתון כדוגמה.
  *
+ * כל השירותים שנצטרך נקרא ל movieService
+ *
  * זכרו:
  *   - @GetMapping    → HTTP GET
  *   - @PostMapping   → HTTP POST  (יצירה → 201 Created)
@@ -57,8 +59,10 @@ public class MovieController {
      * החזירו סרט בודד לפי ID.
      * אם לא קיים — השירות זורק MovieNotFoundException ו-Spring מחזיר 404.
      *
-     * רמז: @GetMapping("/{id}")
-     *       public MovieDto getMovie(@PathVariable Long id) { ... }
+     *רמז:
+     * שימו לב שגם כאן נקרא ל (עם תוספת)GetMapping
+     * יש להשתמש ב PathVariable
+     *הפונקציה צריכה להיות מסוג MovieDto ושימו לב לפרמטרים הנדרשים
      */
     // TODO: הוסיפו כאן את ה-endpoint
 
@@ -69,31 +73,33 @@ public class MovieController {
     /**
      * קבלו MovieDto מגוף הבקשה, שמרו, והחזירו 201 Created.
      * כללו Location header שמצביע על ה-URI של הסרט החדש.
-     *
-     * חתימה מלאה:
-     *   @PostMapping
-     *   public ResponseEntity<MovieDto> createMovie(
-     *       @RequestBody @Valid MovieDto dto,
-     *       UriComponentsBuilder ucb)
-     *
-     * רמז ל-Location header:
-     *   URI location = ucb.path("/api/v1/movies/{id}")
-     *                     .buildAndExpand(saved.getId())
-     *                     .toUri();
-     *   return ResponseEntity.created(location).body(saved);
+     *לזכור שמדובר בקריאה מסוג POST ולמעלה רשום מה יש לרשום מעל הפונקציה.
      */
     // TODO: הוסיפו כאן את ה-endpoint
 
+    /*   //signature of the function
+    public ResponseEntity<MovieDto> createMovie(
+            @RequestBody @Valid MovieDto dto,
+            UriComponentsBuilder ucb){
+
+        MovieDto saved =
+
+        URI location =
+        return ResponseEntity.created(location).body(saved);
+      }
+    */
 
     // ════════════════════════════════════════════════════════════════════════
     // TODO משימה 2ג — PUT עדכון סרט
     // ════════════════════════════════════════════════════════════════════════
     /**
      * קבלו ID ב-path וגוף מעודכן ב-body. עדכנו והחזירו 200 OK.
+     *חתימת הפונקציה מסוג MovieDto
      *
-     * רמז: @PutMapping("/{id}")
-     *       public MovieDto updateMovie(@PathVariable Long id,
-     *                                   @RequestBody @Valid MovieDto dto)
+     *רמז:
+     * יש פונקציה בmovieService שמעדכנת יש להסתכל אילו פרמטרים צריכה
+     * כדי לקבל id נשתמש ב PathVariable@
+     * כדי לקבל dto נשתמש ב RequestBody @Valid@
      */
     // TODO: הוסיפו כאן את ה-endpoint
 
@@ -104,11 +110,15 @@ public class MovieController {
     /**
      * מחקו סרט לפי ID. החזירו 204 No Content.
      *
-     * רמז: @DeleteMapping("/{id}")
-     *       public ResponseEntity<Void> deleteMovie(@PathVariable Long id)
      *
-     * לאחר movieService.delete(id):
-     *   return ResponseEntity.noContent().build();
+     *הנחיות:
+     * הפונקציה בתימה תהיה מסוג ResponseEntity גנריות Void
+     * לכן נקרא לפונקציה ב movieService שעושה מחיקה
+     * אבל נחזיר:
+     * ResponseEntity.noContent().build()
+     *
+     * רמז:
+     * בחתימת הפונקציה נשתמש ב PathVariable@ בקבלת הפרמטר של id
      */
     // TODO: הוסיפו כאן את ה-endpoint
 }

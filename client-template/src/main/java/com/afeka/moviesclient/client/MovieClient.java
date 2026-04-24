@@ -55,34 +55,38 @@ public class MovieClient {
     // TODO משימה 3א — GET סרט לפי ID
     // ════════════════════════════════════════════════════════════════════════
     /**
-     * שלחו GET ל- /api/v1/movies/{id}
-     * אם השרת מחזיר 404 — תחזירו Optional.empty()
+     * send GET to - /api/v1/movies/{id}
+     * שימו לב שהבקשה היא למשוך סרט לפי id
+     * אם השרת מחזיר 404 — תחזירו ()Optional.empty
      * אחרת — תחזירו Optional.of(movie)
      *
      * רמז:
-     *   try {
-     *       Movie m = restClient.get()
-     *           .uri("/api/v1/movies/{id}", id)
-     *           .retrieve()
-     *           .body(Movie.class);
-     *       return Optional.ofNullable(m);
-     *   } catch (HttpClientErrorException.NotFound e) {
-     *       return Optional.empty();
-     *   }
+     * המפתח לתשובה נמצא בתוספת שיש להכניס ל uri שנשלח
+     *   Send Get
      */
     public Optional<Movie> getMovieById(Long id) {
         // TODO: מחקו את השורה הבאה וכתבו מימוש
         throw new UnsupportedOperationException("TODO: implement getMovieById");
+        /**
+         try {
+         *      // WRITE YOUR CODE HERE
+         *       return Optional.ofNullable(movie);
+         *   } catch (HttpClientErrorException.NotFound e) {
+         *       return Optional.empty();
+         *   }
+         */
     }
 
     // ════════════════════════════════════════════════════════════════════════
     // TODO משימה 3ב — GET סרטים לפי ז'אנר
     // ════════════════════════════════════════════════════════════════════════
     /**
-     * שלחו GET ל- /api/v1/movies?genre={genre}
-     * החזירו List<Movie>
+     *send GET to - /api/v1/movies?genre={genre}
+     *החזירו List מסוג Movie
      *
-     * רמז: .uri("/api/v1/movies?genre={genre}", genre)
+     *רמז:
+     * הקריאה GET דומה מאוד לקריאה בפונקציה getMovieById
+     * אבל ההחזרה צריכה להתבצע בדומה לפונקציה ב- getAllMovies
      */
     public List<Movie> getMoviesByGenre(String genre) {
         // TODO: מחקו את השורה הבאה וכתבו מימוש
@@ -93,31 +97,39 @@ public class MovieClient {
     // TODO משימה 3ג — POST יצירת סרט
     // ════════════════════════════════════════════════════════════════════════
     /**
-     * שלחו POST ל- /api/v1/movies עם גוף ה-Movie
+     * send POST to - /api/v1/movies with the type of Movie
      * החזירו את ה-Movie שנוצר (כולל ה-ID שהוקצה על ידי השרת)
      *
      * השתמשו ב- .toEntity(Movie.class) כדי לקבל ResponseEntity
-     * ואז הדפיסו את ה-status code וה-Location header (אופציונלי)
+     * ואז הדפיסו את ה-status code וה-Location header (אופציונלי) וכבר ביצענו רק להוריד סימון הערה
      *
-     * רמז:
-     *   ResponseEntity<Movie> response = restClient.post()
-     *       .uri("/api/v1/movies")
-     *       .body(movie)
-     *       .retrieve()
-     *       .toEntity(Movie.class);
-     *   return response.getBody();
+     * הנחיות:
+     * עבוד לפי המבנה שהגדרנו בהערה בפונציה
+     *
      */
     public Movie createMovie(Movie movie) {
         // TODO: מחקו את השורה הבאה וכתבו מימוש
         throw new UnsupportedOperationException("TODO: implement createMovie");
+
+        /**
+         * ResponseEntity<Movie> response = restClient.
+         *
+         *  FILL UR CODE HERE
+         *
+         * System.out.println("  Server responded with: " + response.getStatusCode());
+         * System.out.println("  Location: " + response.getHeaders().getLocation())
+         * return response.getBody();
+         *
+         */
+
     }
 
     // ════════════════════════════════════════════════════════════════════════
     // TODO משימה 3ד — DELETE מחיקת סרט
     // ════════════════════════════════════════════════════════════════════════
     /**
-     * שלחו DELETE ל- /api/v1/movies/{id}
-     * אין גוף בתשובה (204 No Content) — השתמשו ב- .toBodilessEntity()
+     * send DELETE to /api/v1/movies/{id}
+     * אין גוף בתשובה (204 No Content) — השתמשו ב- ()toBodilessEntity
      */
     public void deleteMovie(Long id) {
         // TODO: מחקו את השורה הבאה וכתבו מימוש
