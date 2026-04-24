@@ -20,7 +20,7 @@ public class Movie {
     @Column(nullable = false)
     private String director;
 
-    @Column(nullable = false)
+    @Column(name = "release_year", nullable = false)
     private int year;
 
     @Column(nullable = false)
