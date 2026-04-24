@@ -15,7 +15,7 @@
   <groupId>com.afeka</groupId>
   <artifactId>movies-api-client</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <n>movies-api-client</n>
+  <name>movies-api-client</name>
   <description>Part B — Movies REST API Client Template</description>
 
   <properties>
