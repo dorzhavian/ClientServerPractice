@@ -20,8 +20,9 @@ import java.util.List;
  * עליכם להשלים את ה-endpoints שמסומנים ב-TODO.
  * ה-endpoint הראשון (GET /movies) נתון כדוגמה.
  *
- * כל השירותים שנצטרך נקרא ל movieService
+ * movieService כל השירותים שנצטרך נקרא ל
  *
+ * כדי לראות מה הפונקציות מקבלות server-template/src/main/java/com/afeka/moviesapi/service/MovieService.java שנמצא במיקום MovieService.java נפתח את הקובץ
  * זכרו:
  *   - @GetMapping    → HTTP GET
  *   - @PostMapping   → HTTP POST  (יצירה → 201 Created)
