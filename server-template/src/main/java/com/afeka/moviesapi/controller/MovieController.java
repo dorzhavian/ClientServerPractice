@@ -112,8 +112,8 @@ public class MovieController {
      *
      *
      *הנחיות:
-     * הפונקציה בתימה תהיה מסוג ResponseEntity גנריות Void
-     * לכן נקרא לפונקציה ב movieService שעושה מחיקה
+     * בחתימה של הפונקציה הערך המוחזר יהיה מסוג - ResponseEntity<Void>
+     *  movieService - לכן נקרא לפונקציה במחלקה מוביסרביס שעושה מחיקה
      * אבל נחזיר:
      * ResponseEntity.noContent().build()
      *
