@@ -61,12 +61,10 @@ public class MovieClient {
      * אחרת — תחזירו Optional.of(movie)
      *
      * רמז:
-     * המפתח לתשובה נמצא בתוספת שיש להכניס ל uri שנשלח
-     *   Send Get
+     * כדי להיעזר בהערות שמופיעות בשורות 14-35
+     *  
      */
     public Optional<Movie> getMovieById(Long id) {
-        // TODO: מחקו את השורה הבאה וכתבו מימוש
-        throw new UnsupportedOperationException("TODO: implement getMovieById");
         /**
          try {
          *      // WRITE YOUR CODE HERE
@@ -89,8 +87,6 @@ public class MovieClient {
      * אבל ההחזרה צריכה להתבצע בדומה לפונקציה ב- getAllMovies
      */
     public List<Movie> getMoviesByGenre(String genre) {
-        // TODO: מחקו את השורה הבאה וכתבו מימוש
-        throw new UnsupportedOperationException("TODO: implement getMoviesByGenre");
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -108,9 +104,6 @@ public class MovieClient {
      *
      */
     public Movie createMovie(Movie movie) {
-        // TODO: מחקו את השורה הבאה וכתבו מימוש
-        throw new UnsupportedOperationException("TODO: implement createMovie");
-
         /**
          * ResponseEntity<Movie> response = restClient.
          *
@@ -132,7 +125,6 @@ public class MovieClient {
      * אין גוף בתשובה (204 No Content) — השתמשו ב- ()toBodilessEntity
      */
     public void deleteMovie(Long id) {
-        // TODO: מחקו את השורה הבאה וכתבו מימוש
-        throw new UnsupportedOperationException("TODO: implement deleteMovie");
+
     }
 }
