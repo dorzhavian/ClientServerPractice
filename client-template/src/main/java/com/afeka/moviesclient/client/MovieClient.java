@@ -110,7 +110,7 @@ public class MovieClient {
          *  FILL UR CODE HERE
          *
          * System.out.println("  Server responded with: " + response.getStatusCode());
-         * System.out.println("  Location: " + response.getHeaders().getLocation())
+         * System.out.println("  Location: " + response.getHeaders().getLocation());
          * return response.getBody();
          *
          */
